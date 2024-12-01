@@ -4,7 +4,7 @@
 package org.example.connect4;
 
 import java.util.Scanner;
-import org.example.connect4.Database;
+
 
 public class Connect4 {
     /**
