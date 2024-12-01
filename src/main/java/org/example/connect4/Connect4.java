@@ -1,21 +1,9 @@
-/**
- * A csomag leírása.
- */
-package org.example.connect4;
 
+package org.example.connect4;
 import java.util.Scanner;
 
-
 public class Connect4 {
-    /**
-     * A játék fő belépési pontja.
-     * - Bekéri az emberi játékos nevét.
-     * - Létrehozza a játékosokat (emberi és gépi).
-     * - Elindítja a játékot.
-     * - Adatbázis műveleteket végez (pl. tábla létrehozása, highscore megjelenítés).
-     *
-     * @param args A parancssori argumentumok (ebben az esetben nem használjuk).
-     */
+
     public static void main(final String[] args) {
         Scanner scanner = new Scanner(System.in);
 
