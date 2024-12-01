@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- A konzolra írt napló üzenetek szintje -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.layout.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <!-- A root logger beállítása -->
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <!-- Napló szint beállítások specifikus osztályokhoz -->
+    <logger name="com.example.connect4" level="debug" />
+
+</configuration>
