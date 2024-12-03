@@ -1,11 +1,15 @@
 
 package org.example.connect4;
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Connect4 {
-
+    private static final Logger logger = LoggerFactory.getLogger(Connect4.class);
     public static void main(final String[] args) {
         Scanner scanner = new Scanner(System.in);
+        logger.info("Connect4 játék indítása...");
+
 
         // Emberi játékos nevének bekérése
         System.out.print("Add meg a játékos nevét: ");
@@ -22,6 +26,7 @@ public class Connect4 {
 
         // A játék indítása.
         game.startGame();
+
 
         // Adatbázis kapcsolat inicializálása.
         Database database = new Database();

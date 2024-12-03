@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-    <!-- A konzolra írt napló üzenetek szintje -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.layout.PatternLayout">
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
-        </layout>
+    <!-- Konzolra logolás -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
     </appender>
 
-    <!-- A root logger beállítása -->
+    <!-- Fájlba logolás -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>app.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Gyökérlogger szintje -->
     <root level="debug">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
     </root>
-
-    <!-- Napló szint beállítások specifikus osztályokhoz -->
-    <logger name="com.example.connect4" level="debug" />
-
 </configuration>

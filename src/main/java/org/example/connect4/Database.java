@@ -1,9 +1,13 @@
 package org.example.connect4;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
 
 public class Database {
     private static final String URL = "jdbc:sqlite:connect4.db"; // Adatbázis elérési útvonala
+    private static final Logger logger = LoggerFactory.getLogger(Database.class); // Logger deklarálása
 
     /**
      * Kapcsolódás az SQLite adatbázishoz.
@@ -26,11 +30,10 @@ public class Database {
             checkStatement.setString(1, name); // Játékos nevének beállítása a lekérdezéshez
             ResultSet resultSet = checkStatement.executeQuery(); // Lekérdezés végrehajtása
             if (resultSet.getInt(1) > 0) { // Ha a játékos már létezik
-                System.out.println("A játékos már létezik: " + name);
                 return; // Nem adja hozzá újra a játékost
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Hiba történt a játékos ellenőrzése közben: {}", e.getMessage(), e); // Naplózás
         }
 
         // Új játékos hozzáadása, ha még nem létezik
@@ -40,7 +43,7 @@ public class Database {
             statement.setString(1, name); // Játékos neve
             statement.executeUpdate(); // Adatok mentése az adatbázisba
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Hiba történt a játékos hozzáadása közben: {}", e.getMessage(), e); // Naplózás
         }
     }
 
@@ -63,7 +66,7 @@ public class Database {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Hiba történt a pontszámok lekérdezése közben: {}", e.getMessage(), e); // Naplózás
         }
     }
 
@@ -87,7 +90,7 @@ public class Database {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Hiba történt a győzelem frissítése közben: {}", e.getMessage(), e); // Naplózás
         }
     }
 
@@ -108,7 +111,7 @@ public class Database {
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Tábla létrehozása, ha még nem létezett
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Hiba történt a tábla létrehozása közben: {}", e.getMessage(), e); // Naplózás
         }
     }
 }

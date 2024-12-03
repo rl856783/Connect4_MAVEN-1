@@ -1,10 +1,9 @@
-/**
+
 package org.example.connect4;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
     private Board board;
@@ -16,15 +15,15 @@ class BoardTest {
 
     @Test
     void testDropDisk() {
-        assertTrue(board.dropDisk(0, 'X')); // Üres oszlopba sikeres elhelyezés
-        assertEquals('X', board.getBoard()[5][0]); // Korong az alsó sorban
+        Assertions.assertTrue(board.dropDisk(0, 'X')); // Üres oszlopba sikeres elhelyezés
+        Assertions.assertEquals('X', board.getBoard()[5][0]); // Korong az alsó sorban
     }
 
     @Test
     void testIsColumnAvailable() {
-        assertTrue(board.isColumnAvailable(0)); // Kezdetben elérhető az oszlop
+        Assertions.assertTrue(board.isColumnAvailable(0)); // Kezdetben elérhető az oszlop
         board.dropDisk(0, 'X');
-        assertTrue(board.isColumnAvailable(0)); // Egy koronggal még mindig elérhető
+        Assertions.assertTrue(board.isColumnAvailable(0)); // Egy koronggal még mindig elérhető
     }
 
     @Test
@@ -33,9 +32,8 @@ class BoardTest {
         board.resetBoard();
         for (char[] row : board.getBoard()) {
             for (char cell : row) {
-                assertEquals(' ', cell); // Minden mező üres
+                Assertions.assertEquals(' ', cell); // Minden mező üres
             }
         }
     }
 }
-*/

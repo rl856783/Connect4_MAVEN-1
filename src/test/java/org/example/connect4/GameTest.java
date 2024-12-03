@@ -42,4 +42,4 @@ class GameTest {
         assertTrue(game.checkWin(5, 3)); // Győzelem ellenőrzése
     }
 }
-*/
+ */
